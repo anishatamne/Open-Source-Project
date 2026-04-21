@@ -154,7 +154,7 @@ class SceneDataset(Dataset):
             crop,
             *aug,
             transforms.ToTensor(),
-            transforms.Normalize([0.5], [0.5]),     # → [-1, 1]
+            transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5]),  # ✅ FIXED HERE
         ])
 
         log.info(f"[{split}] {len(self.samples)} images | "
