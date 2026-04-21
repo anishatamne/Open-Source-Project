@@ -7,6 +7,9 @@ model = YOLO("yolov8n-pose.pt")
 # Read image
 img = cv2.imread("image.jpg")
 
+# Validate input
+if img is None:
+    raise ValueError("Image not found or failed to load. Check file path.")
 # Check if image loaded correctly
 if img is None:
     raise ValueError("Image not found or failed to load.")
@@ -27,6 +30,9 @@ else:
 if results and len(results) > 0:
     result = results[0]
 
+# Access keypoints
+keypoints = results[0].keypoints.xy
+print(keypoints)
     if result.keypoints is not None and result.keypoints.xy is not None:
         keypoints = result.keypoints.xy
         print("Keypoints detected:")
