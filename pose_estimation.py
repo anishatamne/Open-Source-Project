@@ -7,6 +7,10 @@ model = YOLO("yolov8n-pose.pt")
 # Read image
 img = cv2.imread("image.jpg")
 
+# Validate input
+if img is None:
+    raise ValueError("Image not found or failed to load. Check file path.")
+
 # Run inference
 results = model(img)
 
